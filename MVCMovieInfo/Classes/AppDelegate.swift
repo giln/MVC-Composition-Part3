@@ -17,9 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
 
-        let movieCoordinator = MovieListCoordinator()
+        let movieListCoordinator = MovieListCoordinator()
+        movieListCoordinator.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
 
-        window?.rootViewController = movieCoordinator
+        let searchController = MovieSearchViewController()
+        searchController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        let navBar = UINavigationController(rootViewController: searchController)
+
+        let tabbarController = UITabBarController()
+        tabbarController.viewControllers = [movieListCoordinator, navBar]
+
+        window?.rootViewController = tabbarController
 
         return true
     }
