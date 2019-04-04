@@ -9,8 +9,6 @@ NSSetUncaughtExceptionHandler { exception in
     print("💥 Exception thrown: \(exception)")
 }
 
+let movieCoordinator = MovieListCoordinator()
 
-
-let fetcher = MovieListFetcherViewController()
-
-PlaygroundPage.current.liveView = fetcher
+PlaygroundPage.current.liveView = movieCoordinator
