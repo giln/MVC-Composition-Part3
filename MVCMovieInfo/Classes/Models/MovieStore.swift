@@ -45,7 +45,7 @@ public class MovieStore: MovieService {
         }
         
         urlSession.dataTask(with: url) { (data, response, error) in
-            if error != nil {
+            if error == nil {
                 self.handleError(errorHandler: errorHandler, error: MovieError.apiError)
                 return
             }

@@ -9,12 +9,12 @@ NSSetUncaughtExceptionHandler { exception in
     print("💥 Exception thrown: \(exception)")
 }
 
-
 open class MovieListFetcherViewController1: UIViewController {
     // MARK: - Variables
 
     public let listController = ListViewController()
     private let loadingViewController = LoadingViewController()
+    private let errorViewController = ErrorViewController()
 
     public let movieStore = MovieStore.shared
 
@@ -37,6 +37,7 @@ open class MovieListFetcherViewController1: UIViewController {
         super.viewWillAppear(animated)
 
         remove(viewControllerToRemove: listController)
+        remove(viewControllerToRemove: errorViewController)
         add(asChildViewController: loadingViewController)
 
         movieStore.fetchMovies(from: endpoint, params: nil, successHandler: { moviesResponse in
@@ -45,7 +46,10 @@ open class MovieListFetcherViewController1: UIViewController {
             self.add(asChildViewController: self.listController)
             self.listController.list = moviesResponse.results
         }) { error in
+
             self.remove(viewControllerToRemove: self.loadingViewController)
+            self.add(asChildViewController: self.errorViewController)
+            self.errorViewController.errorLabel.text = error.localizedDescription
         }
     }
 }
