@@ -11,6 +11,8 @@ NSSetUncaughtExceptionHandler { exception in
 
 
 
-let movieFetcher = MovieFetcherViewController()
+let movieFetcher = MovieListFetcherViewController()
+
+movieFetcher.endpoint = .topRated
 
 PlaygroundPage.current.liveView = movieFetcher
