@@ -31,8 +31,10 @@
 		A70586ED2256322F00D9FC43 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70586EB2256322F00D9FC43 /* ListViewController.swift */; };
 		A70586EF2256325200D9FC43 /* Movie+Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70586EE2256325200D9FC43 /* Movie+Listable.swift */; };
 		A70586F02256325200D9FC43 /* Movie+Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70586EE2256325200D9FC43 /* Movie+Listable.swift */; };
-		A705871F22574B1900D9FC43 /* TMDBAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705871E22574B1900D9FC43 /* TMDBAPIKey.swift */; };
-		A705872022574B1900D9FC43 /* TMDBAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705871E22574B1900D9FC43 /* TMDBAPIKey.swift */; };
+		A70586F22256347200D9FC43 /* MovieFetcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70586F12256347200D9FC43 /* MovieFetcherViewController.swift */; };
+		A70586F32256347200D9FC43 /* MovieFetcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70586F12256347200D9FC43 /* MovieFetcherViewController.swift */; };
+		A705872222574E5D00D9FC43 /* TMDBAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705872122574E5D00D9FC43 /* TMDBAPIKey.swift */; };
+		A705872322574E5D00D9FC43 /* TMDBAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705872122574E5D00D9FC43 /* TMDBAPIKey.swift */; };
 		A7851E7B224E288400C24A80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7851E7A224E288400C24A80 /* AppDelegate.swift */; };
 		A7851E82224E288500C24A80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7851E81224E288500C24A80 /* Assets.xcassets */; };
 		A7851E85224E288500C24A80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7851E83224E288500C24A80 /* LaunchScreen.storyboard */; };
@@ -59,7 +61,8 @@
 		A70586E82256320F00D9FC43 /* ImageWithFourLabelView+Listable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageWithFourLabelView+Listable.swift"; sourceTree = "<group>"; };
 		A70586EB2256322F00D9FC43 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		A70586EE2256325200D9FC43 /* Movie+Listable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+Listable.swift"; sourceTree = "<group>"; };
-		A705871E22574B1900D9FC43 /* TMDBAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDBAPIKey.swift; sourceTree = "<group>"; };
+		A70586F12256347200D9FC43 /* MovieFetcherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFetcherViewController.swift; sourceTree = "<group>"; };
+		A705872122574E5D00D9FC43 /* TMDBAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDBAPIKey.swift; sourceTree = "<group>"; };
 		A7851E77224E288400C24A80 /* MVCMovieInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVCMovieInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7851E7A224E288400C24A80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7851E81224E288500C24A80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				A70586EB2256322F00D9FC43 /* ListViewController.swift */,
+				A70586F12256347200D9FC43 /* MovieFetcherViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -201,7 +205,7 @@
 		A7851E94224E305800C24A80 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A705871E22574B1900D9FC43 /* TMDBAPIKey.swift */,
+				A705872122574E5D00D9FC43 /* TMDBAPIKey.swift */,
 				A70586EE2256325200D9FC43 /* Movie+Listable.swift */,
 				A7851E98224E30A800C24A80 /* Movie.swift */,
 				A7851E95224E30A800C24A80 /* MovieStore.swift */,
@@ -341,9 +345,9 @@
 				A70586DB2256277F00D9FC43 /* DataFetching.swift in Sources */,
 				A70586D022560E0500D9FC43 /* ReusableView.swift in Sources */,
 				A70586E122562A0D00D9FC43 /* ImageWithFourLabelCell.swift in Sources */,
+				A705872222574E5D00D9FC43 /* TMDBAPIKey.swift in Sources */,
 				A70586D72256264C00D9FC43 /* DownloadImageView.swift in Sources */,
 				A7851E99224E30A800C24A80 /* MovieStore.swift in Sources */,
-				A705871F22574B1900D9FC43 /* TMDBAPIKey.swift in Sources */,
 				A70586CC22560E0500D9FC43 /* UIViewController+Container.swift in Sources */,
 				A70586E322562A0D00D9FC43 /* ImageWithFourLabelView.swift in Sources */,
 				A70586E92256320F00D9FC43 /* ImageWithFourLabelView+Listable.swift in Sources */,
@@ -352,6 +356,7 @@
 				A7851E9A224E30A800C24A80 /* MovieService.swift in Sources */,
 				A7851E7B224E288400C24A80 /* AppDelegate.swift in Sources */,
 				A7851E9B224E30A800C24A80 /* Movie.swift in Sources */,
+				A70586F22256347200D9FC43 /* MovieFetcherViewController.swift in Sources */,
 				A70586CA22560E0500D9FC43 /* UIView+Anchor.swift in Sources */,
 				A70586EC2256322F00D9FC43 /* ListViewController.swift in Sources */,
 				A70586E6225631EF00D9FC43 /* Listable.swift in Sources */,
@@ -367,8 +372,9 @@
 				A70586D82256264C00D9FC43 /* DownloadImageView.swift in Sources */,
 				A7851EAB224E314F00C24A80 /* MovieService.swift in Sources */,
 				A70586F02256325200D9FC43 /* Movie+Listable.swift in Sources */,
-				A705872022574B1900D9FC43 /* TMDBAPIKey.swift in Sources */,
+				A705872322574E5D00D9FC43 /* TMDBAPIKey.swift in Sources */,
 				A70586CF22560E0500D9FC43 /* UIViewController+Anchor.swift in Sources */,
+				A70586F32256347200D9FC43 /* MovieFetcherViewController.swift in Sources */,
 				A70586E422562A0D00D9FC43 /* ImageWithFourLabelView.swift in Sources */,
 				A70586ED2256322F00D9FC43 /* ListViewController.swift in Sources */,
 				A70586CB22560E0500D9FC43 /* UIView+Anchor.swift in Sources */,

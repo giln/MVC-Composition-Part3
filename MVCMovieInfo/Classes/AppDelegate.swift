@@ -17,18 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
 
-        let listController = ListViewController()
+        let movieFetcher = MovieFetcherViewController()
 
-        let movieStore = MovieStore.shared
-
-        movieStore.fetchMovies(from: .topRated, params: nil, successHandler: { moviesResponse in
-            print(moviesResponse)
-            listController.list = moviesResponse.results
-        }) { error in
-            print(error)
-        }
-
-        window?.rootViewController = listController
+        window?.rootViewController = movieFetcher
 
         return true
     }
