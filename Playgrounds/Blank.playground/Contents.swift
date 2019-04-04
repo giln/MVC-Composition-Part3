@@ -10,8 +10,11 @@ NSSetUncaughtExceptionHandler { exception in
 PlaygroundPage.current.needsIndefiniteExecution = true
 
 public protocol Listable {
-    var title: String { get }
-    var longtext: String { get }
+    var firstText: String { get }
+    var secondText: String { get }
+    var thirdText: String { get }
+    var fourthText: String { get }
+    var imageUrl: URL { get }
 }
 
 open class ListViewController: UITableViewController {
@@ -48,8 +51,9 @@ open class ListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ImageWithFourLabelCell.defaultReuseIdentifier, for: indexPath) as! ImageWithFourLabelCell
 
         let element = list[indexPath.row]
-        cell.layout.firstLabel.text = element.title
-        cell.layout.secondLabel.text = element.longtext
+        cell.layout.firstLabel.text = element.firstText
+        cell.layout.secondLabel.text = element.secondText
+        cell.layout.imageView.url = element.imageUrl
 
         return cell
     }
@@ -58,8 +62,24 @@ open class ListViewController: UITableViewController {
 let listController = ListViewController()
 
 extension Movie: Listable {
-    public var longtext: String {
+    public var firstText: String {
+        return title
+    }
+
+    public var secondText: String {
         return overview
+    }
+
+    public var thirdText: String {
+        return ""
+    }
+
+    public var fourthText: String {
+        return ""
+    }
+
+    public var imageUrl: URL {
+        return posterURL
     }
 }
 
