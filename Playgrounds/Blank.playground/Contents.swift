@@ -47,12 +47,13 @@ open class ListViewController: UITableViewController {
     }
 
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: ImageWithFourLabelCell.defaultReuseIdentifier, for: indexPath) as! ImageWithFourLabelCell
 
         let element = list[indexPath.row]
         cell.layout.firstLabel.text = element.firstText
         cell.layout.secondLabel.text = element.secondText
+        cell.layout.thirdLabel.text = element.thirdText
+        cell.layout.fourthLabel.text = element.fourthText
         cell.layout.imageView.url = element.imageUrl
 
         return cell
@@ -62,6 +63,13 @@ open class ListViewController: UITableViewController {
 let listController = ListViewController()
 
 extension Movie: Listable {
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }()
+
     public var firstText: String {
         return title
     }
@@ -71,11 +79,15 @@ extension Movie: Listable {
     }
 
     public var thirdText: String {
-        return ""
+        return Movie.dateFormatter.string(from: releaseDate)
     }
 
     public var fourthText: String {
-        return ""
+        let rating = Int(voteAverage)
+        let ratingText = (0 ..< rating).reduce("") { (acc, _) -> String in
+            return acc + "⭐️"
+        }
+        return ratingText
     }
 
     public var imageUrl: URL {
