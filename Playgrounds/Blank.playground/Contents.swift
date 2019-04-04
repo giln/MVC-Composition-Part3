@@ -9,6 +9,50 @@ NSSetUncaughtExceptionHandler { exception in
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
+public protocol Listable {
+    var title: String { get }
+}
+
+open class ListViewController: UITableViewController {
+    // MARK: - Variables
+
+    open var list = [Listable]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
+    // MARK: Lifecycle
+
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupTableView()
+    }
+
+    private func setupTableView() {
+        tableView.tableFooterView = UIView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.defaultReuseIdentifier)
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+
+    // MARK: - TableViewDataSource
+
+    open override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        return list.count
+    }
+
+    open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.defaultReuseIdentifier, for: indexPath)
+
+        let element = list[indexPath.row]
+        cell.textLabel?.text = element.title
+
+        return cell
+    }
+}
+
 
 let movieStore = MovieStore.shared
 
@@ -17,4 +61,3 @@ movieStore.fetchMovies(from: .topRated, params: nil, successHandler: { moviesRes
 }) { error in
     print(error)
 }
-
