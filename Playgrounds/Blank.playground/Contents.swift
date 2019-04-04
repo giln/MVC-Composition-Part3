@@ -3,12 +3,14 @@ import UIKit
 
 @testable import MVCMovieInfoFramework
 
+PlaygroundPage.current.needsIndefiniteExecution = true
+
 NSSetUncaughtExceptionHandler { exception in
     print("💥 Exception thrown: \(exception)")
 }
 
-PlaygroundPage.current.needsIndefiniteExecution = true
 
 
 let movieFetcher = MovieFetcherViewController()
+
 PlaygroundPage.current.liveView = movieFetcher

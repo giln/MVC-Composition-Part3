@@ -31,6 +31,5 @@ open class MovieFetcherViewController: UIViewController {
         }) { error in
             print(error)
         }
-
     }
 }
