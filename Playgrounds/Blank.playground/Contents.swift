@@ -11,8 +11,17 @@ NSSetUncaughtExceptionHandler { exception in
 
 
 
-let movieFetcher = MovieListFetcherViewController()
+let topRated = MovieListFetcherViewController()
+topRated.endpoint = .topRated
+let popular = MovieListFetcherViewController()
+popular.endpoint = .popular
+let nowPlaying = MovieListFetcherViewController()
+nowPlaying.endpoint = .nowPlaying
+let upcoming = MovieListFetcherViewController()
+upcoming.endpoint = .upcoming
 
-movieFetcher.endpoint = .topRated
+let segmentedController = SegmentedViewController()
 
-PlaygroundPage.current.liveView = movieFetcher
+segmentedController.items = [topRated, popular, nowPlaying, upcoming]
+
+PlaygroundPage.current.liveView = segmentedController
