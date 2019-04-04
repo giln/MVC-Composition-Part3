@@ -11,6 +11,7 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 
 public protocol Listable {
     var title: String { get }
+    var longtext: String { get }
 }
 
 open class ListViewController: UITableViewController {
@@ -32,7 +33,7 @@ open class ListViewController: UITableViewController {
 
     private func setupTableView() {
         tableView.tableFooterView = UIView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.defaultReuseIdentifier)
+        tableView.register(ImageWithFourLabelCell.self, forCellReuseIdentifier: ImageWithFourLabelCell.defaultReuseIdentifier)
         tableView.rowHeight = UITableView.automaticDimension
     }
 
@@ -44,10 +45,11 @@ open class ListViewController: UITableViewController {
 
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.defaultReuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ImageWithFourLabelCell.defaultReuseIdentifier, for: indexPath) as! ImageWithFourLabelCell
 
         let element = list[indexPath.row]
-        cell.textLabel?.text = element.title
+        cell.layout.firstLabel.text = element.title
+        cell.layout.secondLabel.text = element.longtext
 
         return cell
     }
@@ -56,7 +58,9 @@ open class ListViewController: UITableViewController {
 let listController = ListViewController()
 
 extension Movie: Listable {
-
+    public var longtext: String {
+        return overview
+    }
 }
 
 let movieStore = MovieStore.shared
