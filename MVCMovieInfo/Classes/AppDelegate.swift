@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = UIColor.white
         window?.makeKeyAndVisible()
 
-        let movieFetcher = MovieFetcherViewController()
+        let movieCoordinator = MovieListCoordinator()
 
-        window?.rootViewController = movieFetcher
+        window?.rootViewController = movieCoordinator
 
         return true
     }
