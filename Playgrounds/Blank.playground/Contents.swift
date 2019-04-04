@@ -17,6 +17,16 @@ public protocol Listable {
     var imageUrl: URL { get }
 }
 
+public extension ImageWithFourLabelView {
+    func configure(with element: Listable) {
+        firstLabel.text = element.firstText
+        secondLabel.text = element.secondText
+        thirdLabel.text = element.thirdText
+        fourthLabel.text = element.fourthText
+        imageView.url = element.imageUrl
+    }
+}
+
 open class ListViewController: UITableViewController {
     // MARK: - Variables
 
@@ -50,11 +60,7 @@ open class ListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ImageWithFourLabelCell.defaultReuseIdentifier, for: indexPath) as! ImageWithFourLabelCell
 
         let element = list[indexPath.row]
-        cell.layout.firstLabel.text = element.firstText
-        cell.layout.secondLabel.text = element.secondText
-        cell.layout.thirdLabel.text = element.thirdText
-        cell.layout.fourthLabel.text = element.fourthText
-        cell.layout.imageView.url = element.imageUrl
+        cell.layout.configure(with: element)
 
         return cell
     }
@@ -94,6 +100,8 @@ extension Movie: Listable {
         return posterURL
     }
 }
+
+
 
 let movieStore = MovieStore.shared
 
