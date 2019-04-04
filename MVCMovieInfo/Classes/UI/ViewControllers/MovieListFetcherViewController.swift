@@ -11,8 +11,9 @@ import UIKit
 open class MovieListFetcherViewController: UIViewController {
     // MARK: - Variables
 
-    public var movieStore = MovieStore.shared
-    private let listController = ListViewController()
+    public let listStateController = ListStateViewController()
+
+    public let movieStore = MovieStore.shared
 
     public var endpoint: Endpoint = .nowPlaying {
         didSet {
@@ -26,17 +27,20 @@ open class MovieListFetcherViewController: UIViewController {
         super.viewDidLoad()
 
         title = endpoint.description
-        add(asChildViewController: listController)
+        add(asChildViewController: listStateController)
     }
 
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        movieStore.fetchMovies(from: endpoint, params: nil, successHandler: { [weak self] moviesResponse in
+        listStateController.state = .loading
 
-            self?.listController.list = moviesResponse.results
+        movieStore.fetchMovies(from: endpoint, params: nil, successHandler: { moviesResponse in
+
+            self.listStateController.state = .list(moviesResponse.results)
         }) { error in
-            print(error)
+
+            self.listStateController.state = .error(error.localizedDescription)
         }
     }
 }
