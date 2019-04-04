@@ -9,12 +9,64 @@ NSSetUncaughtExceptionHandler { exception in
     print("💥 Exception thrown: \(exception)")
 }
 
+open class ListStateViewController: UIViewController {
+    public enum State {
+        case loading
+        case list([Listable])
+        case empty(String)
+        case error(String)
+    }
+
+    // MARK: - Variables
+
+    public var state = State.empty("") {
+        didSet {
+            switch state {
+            case .loading:
+                remove(viewControllerToRemove: emptyViewController)
+                remove(viewControllerToRemove: errorViewController)
+                remove(viewControllerToRemove: listViewController)
+                add(asChildViewController: loadingViewController)
+            case let .list(list):
+                listViewController.list = list
+                remove(viewControllerToRemove: emptyViewController)
+                remove(viewControllerToRemove: errorViewController)
+                remove(viewControllerToRemove: loadingViewController)
+                add(asChildViewController: listViewController)
+            case let .empty(emptyString):
+                emptyViewController.errorLabel.text = emptyString
+                remove(viewControllerToRemove: listViewController)
+                remove(viewControllerToRemove: errorViewController)
+                remove(viewControllerToRemove: loadingViewController)
+                add(asChildViewController: emptyViewController)
+            case let .error(errorString):
+                errorViewController.errorLabel.text = errorString
+                remove(viewControllerToRemove: emptyViewController)
+                remove(viewControllerToRemove: listViewController)
+                remove(viewControllerToRemove: loadingViewController)
+                add(asChildViewController: errorViewController)
+            }
+        }
+    }
+
+    private let loadingViewController = LoadingViewController()
+    private let emptyViewController = ErrorViewController()
+    private let errorViewController = ErrorViewController()
+    private let listViewController = ListViewController()
+
+    // MARK: - Lifecycle
+
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+
+        addChild(listViewController)
+    }
+}
+
 open class MovieListFetcherViewController1: UIViewController {
     // MARK: - Variables
 
-    public let listController = ListViewController()
-    private let loadingViewController = LoadingViewController()
-    private let errorViewController = ErrorViewController()
+    public let listStateController = ListStateViewController()
 
     public let movieStore = MovieStore.shared
 
@@ -30,26 +82,20 @@ open class MovieListFetcherViewController1: UIViewController {
         super.viewDidLoad()
 
         title = endpoint.description
-        add(asChildViewController: listController)
+        add(asChildViewController: listStateController)
     }
 
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        remove(viewControllerToRemove: listController)
-        remove(viewControllerToRemove: errorViewController)
-        add(asChildViewController: loadingViewController)
+        listStateController.state = .loading
 
         movieStore.fetchMovies(from: endpoint, params: nil, successHandler: { moviesResponse in
 
-            self.remove(viewControllerToRemove: self.loadingViewController)
-            self.add(asChildViewController: self.listController)
-            self.listController.list = moviesResponse.results
+            self.listStateController.state = .list(moviesResponse.results)
         }) { error in
 
-            self.remove(viewControllerToRemove: self.loadingViewController)
-            self.add(asChildViewController: self.errorViewController)
-            self.errorViewController.errorLabel.text = error.localizedDescription
+            self.listStateController.state = .error(error.localizedDescription)
         }
     }
 }
