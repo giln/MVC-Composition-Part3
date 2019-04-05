@@ -47,6 +47,8 @@
 		A70587052256400400D9FC43 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70587032256400400D9FC43 /* MovieSearchViewController.swift */; };
 		A70587342257504000D9FC43 /* TMDBAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70587332257503F00D9FC43 /* TMDBAPIKey.swift */; };
 		A70587352257504000D9FC43 /* TMDBAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70587332257503F00D9FC43 /* TMDBAPIKey.swift */; };
+		A77CCD102257886F0071225D /* MovieSearchFetcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CCD0F2257886F0071225D /* MovieSearchFetcherViewController.swift */; };
+		A77CCD112257886F0071225D /* MovieSearchFetcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CCD0F2257886F0071225D /* MovieSearchFetcherViewController.swift */; };
 		A7851E7B224E288400C24A80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7851E7A224E288400C24A80 /* AppDelegate.swift */; };
 		A7851E82224E288500C24A80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7851E81224E288500C24A80 /* Assets.xcassets */; };
 		A7851E85224E288500C24A80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7851E83224E288500C24A80 /* LaunchScreen.storyboard */; };
@@ -82,6 +84,7 @@
 		A70587032256400400D9FC43 /* MovieSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchViewController.swift; sourceTree = "<group>"; };
 		A70587332257503F00D9FC43 /* TMDBAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDBAPIKey.swift; sourceTree = "<group>"; };
 		A77CCD0E225785640071225D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A77CCD0F2257886F0071225D /* MovieSearchFetcherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchFetcherViewController.swift; sourceTree = "<group>"; };
 		A7851E77224E288400C24A80 /* MVCMovieInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVCMovieInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7851E7A224E288400C24A80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7851E81224E288500C24A80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 				A70586F12256347200D9FC43 /* MovieListFetcherViewController.swift */,
 				A70586F72256382D00D9FC43 /* MovieListCoordinator.swift */,
 				A70587032256400400D9FC43 /* MovieSearchViewController.swift */,
+				A77CCD0F2257886F0071225D /* MovieSearchFetcherViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -370,6 +374,7 @@
 			files = (
 				A70586DB2256277F00D9FC43 /* DataFetching.swift in Sources */,
 				A70586D022560E0500D9FC43 /* ReusableView.swift in Sources */,
+				A77CCD102257886F0071225D /* MovieSearchFetcherViewController.swift in Sources */,
 				A70586E122562A0D00D9FC43 /* ImageWithFourLabelCell.swift in Sources */,
 				A70586F5225635E700D9FC43 /* SegmentedViewController.swift in Sources */,
 				A705870122563E5D00D9FC43 /* ListStateViewController.swift in Sources */,
@@ -414,6 +419,7 @@
 				A70586FC22563B6E00D9FC43 /* LoadingViewController.swift in Sources */,
 				A70586CD22560E0500D9FC43 /* UIViewController+Container.swift in Sources */,
 				A70586DC2256277F00D9FC43 /* DataFetching.swift in Sources */,
+				A77CCD112257886F0071225D /* MovieSearchFetcherViewController.swift in Sources */,
 				A70587352257504000D9FC43 /* TMDBAPIKey.swift in Sources */,
 				A7851EAA224E314F00C24A80 /* MovieStore.swift in Sources */,
 				A70586D122560E0500D9FC43 /* ReusableView.swift in Sources */,

@@ -13,7 +13,7 @@ open class MovieSearchViewController: UIViewController, UISearchResultsUpdating 
 
     // MARK: - Variables
 
-    private let listStateViewController = ListStateViewController()
+    private let movieSearchFetcherViewController = MovieSearchFetcherViewController()
     private let searchController = UISearchController(searchResultsController: nil)
 
     // MARK: - Lifecycle
@@ -23,10 +23,9 @@ open class MovieSearchViewController: UIViewController, UISearchResultsUpdating 
 
         title = "Search Movie"
         view.backgroundColor = UIColor.white
-        add(asChildViewController: listStateViewController)
-        listStateViewController.state = .empty("Start searching your favorite movies")
-
         setupNavigationBar()
+
+        add(asChildViewController: movieSearchFetcherViewController)
     }
 
     // MARK: - Private
@@ -44,29 +43,9 @@ open class MovieSearchViewController: UIViewController, UISearchResultsUpdating 
         navigationItem.largeTitleDisplayMode = .automatic
     }
 
-    open func searchMovie(query: String?) {
-        guard let query = query, !query.isEmpty else {
-            listStateViewController.state = .empty("Start searching your favorite movies")
-            return
-        }
-
-        listStateViewController.state = .loading
-
-        service.searchMovie(query: query, params: nil, successHandler: {
-            [unowned self] response in
-
-            self.listStateViewController.state = .list(response.results)
-
-            }, errorHandler: {
-                [unowned self] error in
-
-                self.listStateViewController.state = .error(error.localizedDescription)
-        })
-    }
-
     // MARK: - UISearchResultsUpdating
 
     public func updateSearchResults(for _: UISearchController) {
-        searchMovie(query: searchController.searchBar.text)
+        movieSearchFetcherViewController.searchMovie(query: searchController.searchBar.text)
     }
 }
