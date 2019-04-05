@@ -96,8 +96,6 @@ public extension UIView {
         if let someSuperview = superview {
             leadingAnchor.constraint(greaterThanOrEqualTo: someSuperview.layoutMarginsGuide.leadingAnchor).isActive = true
             trailingAnchor.constraint(lessThanOrEqualTo: someSuperview.layoutMarginsGuide.trailingAnchor).isActive = true
-
-            // leadingAnchor.constraint(greaterThanOrEqualTo: someSuperview.layoutMarginsGuide.leadingAnchor, constant: 8.0).isActive = true
         }
     }
 
