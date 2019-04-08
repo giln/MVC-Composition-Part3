@@ -13,7 +13,7 @@ open class MovieSearchFetcherViewController: UIViewController {
 
     // MARK: - Variables
 
-    private let listStateViewController = ListStateViewController()
+    private let listStateViewController = ListStateViewController<ImageWithFourLabelsView>()
     private let searchController = UISearchController(searchResultsController: nil)
 
     // MARK: - Lifecycle

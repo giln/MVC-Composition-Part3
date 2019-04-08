@@ -8,10 +8,10 @@
 
 import UIKit
 
-open class ListViewController: UITableViewController {
+open class ListViewController<ContentView: Configurable>: UITableViewController {
     // MARK: - Variables
 
-    open var list = [Listable]() {
+    open var list = [ContentView.Element]() {
         didSet {
             tableView.reloadData()
         }
@@ -27,7 +27,7 @@ open class ListViewController: UITableViewController {
 
     private func setupTableView() {
         tableView.tableFooterView = UIView()
-        tableView.register(ImageWithFourLabelCell.self, forCellReuseIdentifier: ImageWithFourLabelCell.defaultReuseIdentifier)
+        tableView.register(ListCell<ContentView>.self, forCellReuseIdentifier: ListCell<ContentView>.defaultReuseIdentifier)
         tableView.rowHeight = UITableView.automaticDimension
     }
 
@@ -38,10 +38,13 @@ open class ListViewController: UITableViewController {
     }
 
     open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ImageWithFourLabelCell.defaultReuseIdentifier, for: indexPath) as! ImageWithFourLabelCell
+        // !!! This warning is wrong !!! The type casting does not fail!
+        // The warning should hopefully go away in newer swift versions
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListCell<ContentView>.defaultReuseIdentifier, for: indexPath) as! ListCell<ContentView>
 
         let element = list[indexPath.row]
-        cell.layout.configure(with: element)
+
+        cell.content.configure(with: element)
 
         return cell
     }

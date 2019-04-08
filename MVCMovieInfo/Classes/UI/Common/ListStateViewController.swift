@@ -8,10 +8,10 @@
 
 import UIKit
 
-open class ListStateViewController: UIViewController {
+open class ListStateViewController<ContentView: Configurable>: UIViewController {
     public enum State {
         case loading
-        case list([Listable])
+        case list([ContentView.Element])
         case empty(String)
         case error(String)
     }
@@ -51,13 +51,13 @@ open class ListStateViewController: UIViewController {
     private let loadingViewController = LoadingViewController()
     private let emptyViewController = ErrorViewController()
     private let errorViewController = ErrorViewController()
-    private let listViewController = ListViewController()
+    private let listViewController = ListViewController<ContentView>()
 
     // MARK: - Lifecycle
 
     open override func viewDidLoad() {
         super.viewDidLoad()
 
-        addChild(listViewController)
+        addChild(emptyViewController)
     }
 }

@@ -8,7 +8,16 @@
 
 import UIKit
 
-open class ImageWithFourLabelView: UIView {
+// Protocol associated with the view
+public protocol ImageWithFourLabelsDisplayable {
+    var firstText: String { get }
+    var secondText: String { get }
+    var thirdText: String { get }
+    var fourthText: String { get }
+    var imageUrl: URL { get }
+}
+
+open class ImageWithFourLabelsView: UIView, Configurable {
     // MARK: - Variables
 
     private let horizontalStackView = UIStackView()
@@ -72,5 +81,15 @@ open class ImageWithFourLabelView: UIView {
         verticalStackView.addArrangedSubview(secondLabel)
         verticalStackView.addArrangedSubview(thirdLabel)
         verticalStackView.addArrangedSubview(fourthLabel)
+    }
+
+    // MARK: - Configurable
+    
+    public func configure(with element: ImageWithFourLabelsDisplayable) {
+        firstLabel.text = element.firstText
+        secondLabel.text = element.secondText
+        thirdLabel.text = element.thirdText
+        fourthLabel.text = element.fourthText
+        imageView.url = element.imageUrl
     }
 }

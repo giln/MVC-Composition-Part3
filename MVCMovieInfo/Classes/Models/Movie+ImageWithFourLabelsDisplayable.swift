@@ -1,5 +1,5 @@
 //
-//  Movie+Listable.swift
+//  Movie+ImageWithFourLabelDisplayable.swift
 //  MVCMovieInfo
 //
 //  Created by Gil Nakache on 04/04/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Movie: Listable {
+extension Movie: ImageWithFourLabelsDisplayable {
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium

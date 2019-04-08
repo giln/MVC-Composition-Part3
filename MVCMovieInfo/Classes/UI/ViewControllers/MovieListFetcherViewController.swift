@@ -11,7 +11,7 @@ import UIKit
 open class MovieListFetcherViewController: UIViewController {
     // MARK: - Variables
 
-    public let listStateController = ListStateViewController()
+    public let listStateController = ListStateViewController<ImageWithFourLabelsView>()
 
     public let movieStore = MovieStore.shared
 
